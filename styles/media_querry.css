@@ -1,0 +1,35 @@
+@media (max-width: 500px) {
+    h2 {
+      font-size: 16px;
+    }
+  
+    .book-img img {
+      height: 80px;
+    }
+  
+    .book-card {
+      width: 75%;
+    }
+  
+    .price-and-likes {
+      margin: 0;
+      font-size: 14px;
+    }
+  
+    table {
+      font-size: 12px;
+      width: 50%;
+    }
+  
+    .main-info {
+      margin: 0;
+    }
+  
+    .td-left {
+      width: 90px;
+    }
+  
+    .td-right {
+      width: 90px;
+    }
+  }
