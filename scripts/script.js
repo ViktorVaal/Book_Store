@@ -1,21 +1,26 @@
+let bookCard = document.getElementsByClassName("books");
+let like = document.getElementsByClassName("like-btn");
+let liked = document.getElementsByClassName("liked-btn");
+let likes = document.getElementsByClassName("likes-given");
+let newLikes = document.getElementsByClassName("likes-given");
+let userComment = document.getElementsByClassName("user-comments");
+let newuserComment = document.getElementsByClassName("comment-input");
+
 function renderAll() {
   getFromLocalStorage();
   renderBooks();
   renderComments();
-  renderLikes();
 }
 
 function renderBooks() {
-  let bookCard = document.getElementsByClassName("books");
   for (let bookIndex = 0; bookIndex < books.length; bookIndex++) {
     bookCard[0].innerHTML += booksTemplate(bookIndex);
+    likes[bookIndex].innerHTML += likesTemplate(bookIndex);
     renderLikeBtn(bookIndex);
   }
 }
 
 function renderLikeBtn(bookIndex) {
-  let like = document.getElementsByClassName("like-btn");
-  let liked = document.getElementsByClassName("liked-btn");
   if (books[bookIndex].liked == true) {
     like[bookIndex].classList.add("d-none");
     liked[bookIndex].classList.remove("d-none");
@@ -25,15 +30,7 @@ function renderLikeBtn(bookIndex) {
   }
 }
 
-function renderLikes() {
-  let likes = document.getElementsByClassName("likes-given");
-  for (let bookIndex = 0; bookIndex < books.length; bookIndex++) {
-    likes[bookIndex].innerHTML += likesTemplate(bookIndex);
-  }
-}
-
 function likeBook(booksIndex) {
-  let newLikes = document.getElementsByClassName("likes-given");
   if (books[booksIndex].liked === true) {
     books[booksIndex].liked = false;
     books[booksIndex].likes = books[booksIndex].likes - 1;
@@ -48,7 +45,6 @@ function likeBook(booksIndex) {
 }
 
 function renderComments() {
-  let userComment = document.getElementsByClassName("user-comments");
   for (let bookindex = 0; bookindex < books.length; bookindex++) {
     for (let commentsIndex = 0; commentsIndex < books[bookindex].comments.length; commentsIndex++) 
       {
@@ -58,8 +54,6 @@ function renderComments() {
 }
 
 function sendComment(bookIndex) {
-  let newuserComment = document.getElementsByClassName("comment-input");
-  let userComment = document.getElementsByClassName("user-comments");
   if (newuserComment[bookIndex].value == "") {
     alert("Geben Sie Bitte einen Kommentar ein!!");
   } else {
